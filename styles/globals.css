@@ -45,6 +45,17 @@ h2 {
   padding: 2rem;
 }
 
+.genre-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: 2rem;
+  max-width: 1300px;
+  width: 100%;
+  margin: auto;
+  color: black;
+  padding: 2rem;
+}
+
 article {
   background: #696458;
   display: flex;
@@ -70,7 +81,6 @@ article img {
   max-width: 1300px;
   width: 100%;
   margin: auto;
-  color: white;
   background: #696458;
   justify-content: center;
   display: flex;
