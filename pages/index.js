@@ -44,7 +44,9 @@ export default function PaginationPage(props) {
       <div className='grid-container'>
         {datagenre?.results?.map((genre) => (
           <article key={genre.id}>
-            <img src={genre.background_image}/>
+            <img
+              src={genre.background_image}
+              alt={genre.name}/>
             <div className='text'>
               <p>{genre.name}</p>
               <p>{genre.slug}</p>
