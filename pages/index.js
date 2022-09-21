@@ -34,7 +34,7 @@ export default function PaginationPage(props) {
       <Pagination
         count={data?.count}
         variant='outlined'
-        color='primary'
+        color="secondary"
         className='pagination'
         page={page}
         onChange={handlePaginationChange}
@@ -58,7 +58,7 @@ export default function PaginationPage(props) {
       <Pagination
         count={data?.count}
         variant='outlined'
-        color='primary'
+        color='secondary'
         className='pagination'
         page={page}
         onChange={handlePaginationChange}
