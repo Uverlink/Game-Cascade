@@ -17,6 +17,16 @@ export default function PaginationPage(props) {
       keepPreviousData: true,
     }
   );
+  const { datagenre } = useQuery(
+    ["genres", page],
+    async () =>
+      await fetch(
+        `https://api.rawg.io/api/genres?key=4291ed9152f84825ab9a062319652c80&page=${page}`
+      ).then((result) => result.json()),
+    {
+      keepPreviousData: true,
+    }
+  );
   function handlePaginationChange(e, value) {
     setPage(value);
     router.push(`?page=${value}`, undefined, { shallow: true });
@@ -31,10 +41,20 @@ export default function PaginationPage(props) {
       <h1>
         GG Commerce
       </h1>
+      <div className='grid-container'>
+        {datagenre?.results?.map((genre) => (
+          <article key={genre.id}>
+            <div className='text'>
+              <p>{genre.name}</p>
+              <p>{genre.slug}</p>
+            </div>
+          </article>
+        ))}
+      </div>
       <Pagination
         count={data?.count}
         variant='outlined'
-        color="secondary"
+        color='standard'
         className='pagination'
         page={page}
         onChange={handlePaginationChange}
@@ -58,7 +78,7 @@ export default function PaginationPage(props) {
       <Pagination
         count={data?.count}
         variant='outlined'
-        color='secondary'
+        color='dcd8c0'
         className='pagination'
         page={page}
         onChange={handlePaginationChange}
