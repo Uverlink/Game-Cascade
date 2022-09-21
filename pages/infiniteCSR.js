@@ -20,15 +20,14 @@ function InfiniteCSRPage() {
   return (
     <div>
       <h1>
-        Rick and Morty with React Query and Infinite Scroll - Client Side
-        Rendered
+        Infinite Scroll
       </h1>
       {status === "success" && (
         <InfiniteScroll
           dataLength={data?.pages.length * 20}
           next={fetchNextPage}
           hasMore={hasNextPage}
-          loader={<h4>Loading...</h4>}
+          loader={<h4>Prochains Jeux...</h4>}
         >
           <div className='grid-container'>
             {data?.pages.map((page) => (
@@ -36,18 +35,15 @@ function InfiniteCSRPage() {
                 {page.results.map((character) => (
                   <article key={character.id}>
                     <img
-                      src={character.image}
-                      alt={character.name}
+                     src={game.background_image}
+                      alt={game.name}
                       height={250}
                       loading='lazy'
-                      width={"100%"}
-                    />
+                       width={"100%"}
+                     />
                     <div className='text'>
-                      <p>Name: {character.name}</p>
-                      <p>Lives in: {character.location.name}</p>
-                      <p>Species: {character.species}</p>
-                      <i>Id: {character.id} </i>
-                    </div>
+                      <p>{game.name}</p>
+                   </div>
                   </article>
                 ))}
               </>
