@@ -42,7 +42,7 @@ export default function PaginationPage(props) {
   return (
     <div>
       <h1>
-        GG Commerce
+        Game Cascade
       </h1>
       <div className='genre-container'>
         {datagenre?.results?.map((genre) => (
