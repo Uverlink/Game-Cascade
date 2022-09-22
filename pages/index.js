@@ -97,7 +97,7 @@ export default function PaginationPage(props) {
       <Pagination
         count={datagame?.count}
         variant='outlined'
-        // color='dcd8c0'
+        // color='dcd8c0'r
         className='pagination'
         page={page}
         onChange={handlePaginationChange}
