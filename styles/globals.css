@@ -90,6 +90,6 @@ article img {
   margin-bottom: 2rem;
 }
 
-.clickable: hover {
+.clickable:hover {
   cursor: pointer;
 }

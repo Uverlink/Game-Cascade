@@ -7,11 +7,12 @@ import { useRouter } from "next/router";
 export default function PaginationPage(props) {
   const router = useRouter();
   const [page, setPage] = useState(1);
+  const [genre, setGenre] = useState(null);
   const { data:datagame } = useQuery(
-    ["games", page],
+    ["games", page, genre],
     async () =>
       await fetch(
-        `https://api.rawg.io/api/games?key=4291ed9152f84825ab9a062319652c80&page=${page}&genre=`
+        `https://api.rawg.io/api/games?key=4291ed9152f84825ab9a062319652c80&page=${page}` + (genre == null ? '' : `&genres=${genre}`)
       ).then((result) => result.json()),
     {
       keepPreviousData: true,
@@ -33,6 +34,12 @@ export default function PaginationPage(props) {
     setPage(value);
     router.push(`?page=${value}`, undefined, { shallow: true });
   }
+
+  function handleClickGenre(value)
+  {
+    setGenre(value);
+  }
+
   useEffect(() => {
     if (router.query.page) {
       setPage(parseInt(router.query.page));
@@ -46,7 +53,10 @@ export default function PaginationPage(props) {
       </h1>
       <div className='genre-container'>
         {datagenre?.results?.map((genre) => (
-          <article key={genre.id}>
+          <article key={genre.id}
+          className="clickable"
+            onClick={() => handleClickGenre(genre.id)}
+          >
             {<img
               src={genre.image_background}
               alt={genre.name}
@@ -87,7 +97,7 @@ export default function PaginationPage(props) {
       <Pagination
         count={datagame?.count}
         variant='outlined'
-        color='dcd8c0'
+        // color='dcd8c0'
         className='pagination'
         page={page}
         onChange={handlePaginationChange}
